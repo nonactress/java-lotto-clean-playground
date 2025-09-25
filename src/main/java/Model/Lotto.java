@@ -10,7 +10,7 @@ public class Lotto {
     public Lotto() {
         List<Integer> numbers = new ArrayList<>();
 
-        for(int i = 1; i <= 45; i++) {
+        for (int i = 1; i <= 45; i++) {
             numbers.add(i);
         }
 

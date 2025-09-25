@@ -6,8 +6,7 @@ import Model.Lottos;
 
 public class OutView {
 
-    public void printLottoMatcher(int[] matchCounts,double rate)
-    {
+    public void printLottoMatcher(int[] matchCounts, double rate) {
         System.out.println("당첨 통계");
         System.out.println("------");
         System.out.println("3개 일치(5,000원): " + matchCounts[3] + "개");
@@ -16,10 +15,9 @@ public class OutView {
         System.out.println("6개 일치(2,000,000,000원): " + matchCounts[6] + "개");
         System.out.printf("총 수익률은 %.2f입니다.", rate);
     }
-    public void printLottos(Lottos lottos)
-    {
-        for(Lotto lotto : lottos.getLottoList())
-        {
+
+    public void printLottos(Lottos lottos) {
+        for (Lotto lotto : lottos.getLottoList()) {
             System.out.println(lotto);
         }
     }

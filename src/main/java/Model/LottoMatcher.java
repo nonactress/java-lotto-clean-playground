@@ -16,6 +16,7 @@ public class LottoMatcher {
 
     private int countMatches(List<Integer> jackpotNumbers, List<Integer> lottoNumbers) {
         int count = 0;
+
         for (int number : lottoNumbers) {
             count += getMatchValue(jackpotNumbers, number);
         }
@@ -40,8 +41,7 @@ public class LottoMatcher {
                 + matchCounts[6] * 2000000000;
     }
 
-    public double getRate(int money)
-    {
-        return (double)calculateTotalEarnings()/money;
+    public double getRate(int money) {
+        return (double) calculateTotalEarnings() / money;
     }
 }

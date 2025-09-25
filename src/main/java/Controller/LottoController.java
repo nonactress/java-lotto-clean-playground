@@ -7,8 +7,7 @@ import View.InputView;
 import View.OutView;
 
 public class LottoController {
-    public void startLotto()
-    {
+    public void startLotto() {
         InputView inputView = new InputView();
         int money = inputView.getMoney();
 
@@ -20,7 +19,7 @@ public class LottoController {
 
         Jackpot jackpot = new Jackpot(inputView.getJackpot());
 
-        LottoMatcher lottoMatcher = new LottoMatcher(lottos,jackpot);
+        LottoMatcher lottoMatcher = new LottoMatcher(lottos, jackpot);
 
         outView.printLottoMatcher(lottoMatcher.getMatchCounts(), lottoMatcher.getRate(money));
     }

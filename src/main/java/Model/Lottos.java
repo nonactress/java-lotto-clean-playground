@@ -8,7 +8,7 @@ public class Lottos {
 
     public Lottos(int money) {
         int COST_PER_TICKET = 1000;
-        int numberOfLottos=money/COST_PER_TICKET;
+        int numberOfLottos = money / COST_PER_TICKET;
         this.lottoList = new ArrayList<>();
 
         for (int i = 0; i < numberOfLottos; i++) {
