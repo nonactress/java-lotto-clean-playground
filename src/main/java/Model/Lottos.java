@@ -6,7 +6,6 @@ import java.util.List;
 public class Lottos {
     private List<Lotto> lottoList;
 
-
     public Lottos(int money) {
         int COST_PER_TICKET = 1000;
         int numberOfLottos=money/COST_PER_TICKET;
@@ -17,16 +16,7 @@ public class Lottos {
         }
     }
 
-    public void printLottos() {
-
-        for (Lotto lotto : lottoList) {
-            System.out.println(lotto);
-        }
-    }
-
     public List<Lotto> getLottoList() {
         return lottoList;
     }
-
-
 }

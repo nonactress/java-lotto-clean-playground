@@ -13,13 +13,15 @@ public class LottoController {
         int money = inputView.getMoney();
 
         Lottos lottos = new Lottos(money);
-        lottos.printLottos();
+
+        OutView outView = new OutView();
+
+        outView.printLottos(lottos);
 
         Jackpot jackpot = new Jackpot(inputView.getJackpot());
 
         LottoMatcher lottoMatcher = new LottoMatcher(lottos,jackpot);
 
-        OutView outView = new OutView();
         outView.printLottoMatcher(lottoMatcher.getMatchCounts(), lottoMatcher.getRate(money));
     }
 }
