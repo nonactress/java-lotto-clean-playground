@@ -34,10 +34,10 @@ public class LottoMatcher {
     }
 
     public double calculateTotalEarnings() {
-        return matchCounts[3] * 5000
-                + matchCounts[4] * 50000
-                + matchCounts[5] * 1500000
-                + matchCounts[6] * 2000000000;
+        return    matchCounts[3] * PrizeMoney.THREE.getMoney()
+                + matchCounts[4] * PrizeMoney.FOUR.getMoney()
+                + matchCounts[5] * PrizeMoney.FIVE.getMoney()
+                + matchCounts[6] * PrizeMoney.SIX.getMoney();
     }
 
     public double getRate(int money) {
