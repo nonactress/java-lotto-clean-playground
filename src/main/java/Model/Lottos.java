@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Lottos {
     private List<Lotto> lottoList;
+    private static int COST_PER_TICKET = 1000;
 
     public Lottos(int money) {
-        int COST_PER_TICKET = 1000;
         int numberOfLottos = money / COST_PER_TICKET;
         this.lottoList = new ArrayList<>();
 
