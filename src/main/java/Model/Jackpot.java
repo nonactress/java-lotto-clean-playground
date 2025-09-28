@@ -17,7 +17,7 @@ public class Jackpot {
     }
 
     public List<Integer> getJackpot() {
-        return jackpot;
+        return Collections.unmodifiableList(jackpot);
     }
 
     @Override

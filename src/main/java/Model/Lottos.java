@@ -1,7 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
 
 public class Lottos {
@@ -18,6 +18,6 @@ public class Lottos {
     }
 
     public List<Lotto> getLottoList() {
-        return lottoList;
+        return Collections.unmodifiableList(lottoList);
     }
 }

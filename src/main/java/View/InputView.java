@@ -20,7 +20,7 @@ public class InputView {
             {
                 System.out.println("금액은 숫자로 입력해주세요!");
             }
-            catch (IllegalArgumentException e)
+           catch (IllegalArgumentException e)
             {
                 System.out.println(e.getMessage());
             }
