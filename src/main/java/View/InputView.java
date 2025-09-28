@@ -1,7 +1,5 @@
 package View;
 
-import Model.Jackpot;
-
 import java.util.Scanner;
 
 public class InputView {

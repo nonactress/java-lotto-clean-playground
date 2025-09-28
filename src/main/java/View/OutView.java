@@ -1,6 +1,5 @@
 package View;
 
-import Controller.LottoController;
 import Model.Lotto;
 import Model.Lottos;
 
@@ -15,6 +14,7 @@ public class OutView {
         System.out.println("6개 일치(2,000,000,000원): " + matchCounts[6] + "개");
         System.out.printf("총 수익률은 %.2f입니다.", rate);
     }
+
 
     public void printLottos(Lottos lottos) {
         for (Lotto lotto : lottos.getLottoList()) {
