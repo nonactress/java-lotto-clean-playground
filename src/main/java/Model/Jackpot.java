@@ -7,11 +7,11 @@ import java.util.List;
 public class Jackpot {
     private List<Integer> jackpot;
 
-    public Jackpot(String[] splits) {
+    public Jackpot(String[] inputJackpot) {
         this.jackpot = new ArrayList<>();  // 리스트 초기화
 
         for (int i = 0; i < 6; i++) {
-            jackpot.add(Integer.parseInt(splits[i]));
+            jackpot.add(Integer.parseInt(inputJackpot[i]));
         }
         Collections.sort(this.jackpot);
     }
