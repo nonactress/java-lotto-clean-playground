@@ -33,7 +33,7 @@ public class InputView {
     {
         if(money<0)
             throw new IllegalArgumentException("금액이 0보다 작을 순 없습니다!");
-        if(money%1000==0)
+        if(money%1000!=0)
             throw new IllegalArgumentException("1000원 단위로 입력해주세요!");
 
     }
