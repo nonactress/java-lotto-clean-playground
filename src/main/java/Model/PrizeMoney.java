@@ -4,7 +4,8 @@ public enum PrizeMoney {
     THREE(5000),
     FOUR(50000),
     FIVE(1500000),
-    SIX(2000000000); // 상수 목록 끝에 세미콜론
+    SIX(2000000000),
+    BONUS(30000000);
 
     private final int money;
 
