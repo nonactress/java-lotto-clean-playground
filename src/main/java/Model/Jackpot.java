@@ -1,24 +1,24 @@
 package Model;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Jackpot {
     private List<Integer> jackpot;
+    private int bounsNumber;
 
-    public Jackpot(String[] inputJackpot) {
-        this.jackpot = new ArrayList<>();  // 리스트 초기화
+    public Jackpot(String[] inputJackpot,int bounsNumber) {
+        JackpotGenerator from = JackpotGenerator.from(inputJackpot);
+        this.jackpot = from.getNumber();
 
-        for (int i = 0; i < 6; i++) {
-            jackpot.add(Integer.parseInt(inputJackpot[i]));
-        }
-        Collections.sort(this.jackpot);
+        this.bounsNumber = bounsNumber;
     }
 
     public List<Integer> getJackpot() {
         return Collections.unmodifiableList(jackpot);
     }
+
+    public int getBounsNumber() {return bounsNumber;}
 
     @Override
     public String toString() {
