@@ -16,7 +16,7 @@ public class InputView {
                 validate(money);
                 return money;
             } catch (InputMismatchException e) {
-                System.out.println("금액은 숫자로 입력해주세요!");
+                System.err.println("금액은 숫자로 입력해주세요!");
                 scanner.nextLine();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
