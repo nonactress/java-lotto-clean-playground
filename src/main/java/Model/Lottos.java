@@ -1,10 +1,10 @@
 package Model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.function.Consumer;
 
-public class Lottos {
+// 1. 제네릭을 사용하여 Iterable<Lotto>로 타입 명시
+public class Lottos implements Iterable<Lotto> {
     private List<Lotto> lottoList;
     private static final int COST_PER_TICKET = 1000;
 
@@ -23,11 +23,12 @@ public class Lottos {
         }
     }
 
-    public List<Lotto> getLottoList() {
-        return Collections.unmodifiableList(lottoList);
-    }
-
     public int getAutoLottoCount(int money,int manualLottosNumber) {
         return money / COST_PER_TICKET - manualLottosNumber;
+    }
+
+    @Override
+    public Iterator<Lotto> iterator() {
+        return lottoList.iterator();
     }
 }

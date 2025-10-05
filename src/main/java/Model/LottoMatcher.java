@@ -10,7 +10,7 @@ public class LottoMatcher {
     public LottoMatcher(Lottos lottos, Jackpot jackpot) {
         this.matchCounts = new HashMap<>();
 
-        for (Lotto lotto : lottos.getLottoList()) {
+        for (Lotto lotto : lottos) {
             int matches = countMatches(jackpot.getJackpot(), lotto.getLotto());
             checkBonus(jackpot, lotto, matches);
         }
