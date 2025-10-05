@@ -1,18 +1,21 @@
 package Model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ManualLotto extends Lotto {
 
     public ManualLotto(String rawNumbers) {
-        numbers = parseNumbers(rawNumbers);
-        validate(numbers);
+        List<Integer> parsedNumbers = parseNumbers(rawNumbers);
 
+        validate(parsedNumbers);
 
+        this.numbers = parsedNumbers;
     }
+
     private List<Integer> parseNumbers(String rawNumbers) {
         try {
             return Arrays.stream(rawNumbers.split(","))
@@ -24,14 +27,30 @@ public class ManualLotto extends Lotto {
         }
     }
 
-    private void validate (List<Integer> parseNumber){
-        if(numbers.size()!=6) {
-            System.err.println("6개의 숫자를 입력해주세요!");
-            //throw new IllegalArgumentException("6개의 숫자를 입력해주세요!");
+    private void validate(List<Integer> numbers) {
+        validateSize(numbers);
+        validateDuplicates(numbers);
+        validateNumberRange(numbers);
+    }
+
+    private void validateSize(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("로또 번호는 6개여야 합니다.");
         }
     }
 
-    private void validateNumberRange(List<Integer> parseNumber) {
+    private void validateDuplicates(List<Integer> numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        if (uniqueNumbers.size() != numbers.size()) {
+            throw new IllegalArgumentException("로또 번호는 중복될 수 없습니다.");
+        }
+    }
 
+    private void validateNumberRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException("로또 번호는 1과 45 사이의 숫자여야 합니다.");
+            }
+        }
     }
 }
