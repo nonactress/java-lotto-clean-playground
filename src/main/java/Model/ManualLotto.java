@@ -8,11 +8,30 @@ import java.util.stream.Collectors;
 public class ManualLotto extends Lotto {
 
     public ManualLotto(String rawNumbers) {
-        String[] numberSplits = rawNumbers.split(",");
+        numbers = parseNumbers(rawNumbers);
+        validate(numbers);
 
-        this.numbers = Arrays.stream(numberSplits)
-                .map(String::trim) // " 21" -> "21"
-                .map(Integer::parseInt) // "21" -> 21
-                .collect(Collectors.toList());
+
+    }
+    private List<Integer> parseNumbers(String rawNumbers) {
+        try {
+            return Arrays.stream(rawNumbers.split(","))
+                    .map(String::trim)
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("로또 번호는 숫자만 입력 가능합니다.");
+        }
+    }
+
+    private void validate (List<Integer> parseNumber){
+        if(numbers.size()!=6) {
+            System.err.println("6개의 숫자를 입력해주세요!");
+            //throw new IllegalArgumentException("6개의 숫자를 입력해주세요!");
+        }
+    }
+
+    private void validateNumberRange(List<Integer> parseNumber) {
+
     }
 }

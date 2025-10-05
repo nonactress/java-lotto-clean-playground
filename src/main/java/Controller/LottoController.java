@@ -13,15 +13,15 @@ public class LottoController {
         InputView inputView = new InputView();
 
         int money = inputView.getMoney();
-        int manualLottoNumber = inputView.getManualLottoNumber();
+        int manualLottoCount = inputView.getManualLottoCount();
 
-        List<String> rawNumbersList = inputView.manualLotto(manualLottoNumber);
+        List<String> rawNumbersList = inputView.manualLotto(manualLottoCount);
 
         Lottos lottos = new Lottos(money, rawNumbersList);
 
         OutView outView = new OutView();
 
-        outView.printLottosStaus(lottos.getAutoLottoCount(money, manualLottoNumber), manualLottoNumber);
+        outView.printLottosStaus(lottos.getAutoLottoCount(money, manualLottoCount), manualLottoCount);
 
         outView.printLottos(lottos);
 
