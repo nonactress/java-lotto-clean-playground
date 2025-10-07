@@ -37,4 +37,6 @@ public class InputView {
     public int getBonus() {
         return scanner.nextInt();
     }
+
+
 }

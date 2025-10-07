@@ -8,23 +8,24 @@ public class Lottos implements Iterable<Lotto> {
     private List<Lotto> lottoList;
     private static final int COST_PER_TICKET = 1000;
 
-    public Lottos(int money, List<String> manualLottoLines) {
+    public Lottos() {
         this.lottoList = new ArrayList<>();
-        int manualLottosNumber = manualLottoLines.size();
+    }
 
-        // 수동 로또 생성
-        for (String line : manualLottoLines) {
-            lottoList.add(new ManualLotto(line));
-        }
 
-        // 자동 로또 생성
-        for (int i = 0; i < getAutoLottoCount(money,manualLottosNumber); i++) {
-            lottoList.add(new AutoLotto());
-        }
+    public void addLotto (Lotto tmp){
+        lottoList.add(tmp);
     }
 
     public int getAutoLottoCount(int money,int manualLottosNumber) {
         return money / COST_PER_TICKET - manualLottosNumber;
+    }
+
+    public void makeAutoLotto(int autoLottosNumber){
+        for (int i = 0; i < autoLottosNumber; i++) {
+            AutoLotto autoLotto = new AutoLotto();
+            lottoList.add(autoLotto);
+        }
     }
 
     @Override

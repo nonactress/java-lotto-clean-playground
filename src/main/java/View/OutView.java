@@ -53,4 +53,9 @@ public class OutView {
     {
         System.out.println("[ERROR] : " + e);
     }
+
+    public void errorPrint(IllegalArgumentException e)
+    {
+        System.err.println("[error]" + e.getMessage());
+    }
 }

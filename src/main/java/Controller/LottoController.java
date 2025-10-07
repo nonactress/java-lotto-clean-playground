@@ -1,8 +1,6 @@
 package Controller;
 
-import Model.Jackpot;
-import Model.LottoMatcher;
-import Model.Lottos;
+import Model.*;
 import View.InputView;
 import View.OutView;
 
@@ -22,9 +20,21 @@ public class LottoController {
             outView.promptForManualLotto();
             List<String> rawNumbersList = inputView.manualLotto(manualLottoCount);
 
-            Lottos lottos = new Lottos(money, rawNumbersList);
+            Lottos lottos = new Lottos();
 
-            outView.printLottosStaus(lottos.getAutoLottoCount(money, manualLottoCount), manualLottoCount);
+            for (String s : rawNumbersList) {
+                try{
+                    lottos.addLotto(new ManualLotto(s));
+                }
+                catch (IllegalArgumentException e)
+                {
+                    System.err.println("[error] :" + e.getMessage());
+                }
+            }
+            int autoLottoCount = lottos.getAutoLottoCount(money, manualLottoCount);
+            lottos.makeAutoLotto(autoLottoCount);
+
+            outView.printLottosStaus(autoLottoCount, manualLottoCount);
 
             outView.printLottos(lottos);
 

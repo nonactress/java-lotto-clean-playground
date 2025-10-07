@@ -28,9 +28,13 @@ public class ManualLotto extends Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        validateSize(numbers);
-        validateDuplicates(numbers);
-        validateNumberRange(numbers);
+        try {
+            validateSize(numbers);
+            validateDuplicates(numbers);
+            validateNumberRange(numbers);
+        } catch (IllegalArgumentException e) {
+            System.err.println("[error]" + e.getMessage());
+        }
     }
 
     private void validateSize(List<Integer> numbers) {
