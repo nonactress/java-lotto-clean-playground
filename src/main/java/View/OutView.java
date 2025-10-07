@@ -28,4 +28,29 @@ public class OutView {
             System.out.println(lotto);
         }
     }
+
+    public void getMoneyHelp() {
+        System.out.println("구입금액을 입력해 주세요.");
+    }
+
+    public void getManualLottoCountHelp() {
+        System.out.println("수동으로 구매할 로또 수를 입력해 주세요.");
+    }
+
+    public void promptForManualLotto() {
+        System.out.println("수동으로 구매할 번호를 입력해 주세요.");
+    }
+
+    public void promptForJackpot() {
+        System.out.println("정답 로또번호를 입력해주세요( ','로 구분해서 입력)");
+    }
+
+    public void promptForBonus() {
+        System.out.println("보너스 볼을 입력해 주세요.");
+    }
+
+    public void printError(IllegalArgumentException e)
+    {
+        System.out.println("[ERROR] : " + e);
+    }
 }
