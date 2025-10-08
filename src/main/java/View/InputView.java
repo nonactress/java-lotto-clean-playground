@@ -18,20 +18,18 @@ public class InputView {
         return scanner.nextLine().split(",");
     }
 
+    public void resetBuffer()
+    {
+        scanner.nextLine();
+    }
 
     public int getManualLottoCount() {
         return scanner.nextInt();
     }
 
-    public List<String> manualLotto(int manualLottoNumber) {
-        List<String> manualLottoLines = new ArrayList<>();
+    public String manualLotto() {
 
-        scanner.nextLine();
-
-        for (int i = 0; i < manualLottoNumber; i++) {
-            manualLottoLines.add(scanner.nextLine());
-        }
-        return manualLottoLines;
+        return scanner.nextLine();
     }
 
     public int getBonus() {

@@ -11,47 +11,40 @@ public class LottoController {
         InputView inputView = new InputView();
         OutView outView = new OutView();
 
-        try {
-            int money = getValidMoney(inputView, outView);
 
-            outView.getManualLottoCountHelp();
-            int manualLottoCount = inputView.getManualLottoCount();
+        int money = getValidMoney(inputView, outView);
 
-            outView.promptForManualLotto();
-            List<String> rawNumbersList = inputView.manualLotto(manualLottoCount);
+        outView.getManualLottoCountHelp();
+        int manualLottoCount = inputView.getManualLottoCount();
 
-            Lottos lottos = new Lottos();
+        outView.promptForManualLotto();
+        Lottos lottos = new Lottos();
 
-            for (String s : rawNumbersList) {
-                try{
-                    lottos.addLotto(new ManualLotto(s));
-                }
-                catch (IllegalArgumentException e)
-                {
-                    System.err.println("[error] :" + e.getMessage());
-                }
-            }
-            int autoLottoCount = lottos.getAutoLottoCount(money, manualLottoCount);
-            lottos.makeAutoLotto(autoLottoCount);
-
-            outView.printLottosStaus(autoLottoCount, manualLottoCount);
-
-            outView.printLottos(lottos);
-
-            outView.promptForJackpot();
-            String[] winningNumber = inputView.getJackpotNumber();
-
-            outView.promptForBonus();
-            int bonusNumber = inputView.getBonus();
-
-            Jackpot jackpot = new Jackpot(winningNumber, bonusNumber);
-
-            LottoMatcher lottoMatcher = new LottoMatcher(lottos, jackpot);
-
-            outView.printLottoMatcher(lottoMatcher.getMatchCounts(), lottoMatcher.getRate(money));
-        } catch (IllegalArgumentException e){
-            System.err.println("[error]" + e.getMessage());
+        inputView.resetBuffer();
+        for (int i = 0; i < manualLottoCount; i++) {
+            Lotto validManualLotto = getValidManualLotto(inputView);
+            lottos.addLotto(validManualLotto);
         }
+
+        int autoLottoCount = lottos.getAutoLottoCount(money, manualLottoCount);
+        lottos.makeAutoLotto(autoLottoCount);
+
+        outView.printLottosStaus(autoLottoCount, manualLottoCount);
+
+        outView.printLottos(lottos);
+
+        outView.promptForJackpot();
+        String[] winningNumber = inputView.getJackpotNumber();
+
+        outView.promptForBonus();
+        int bonusNumber = inputView.getBonus();
+
+        Jackpot jackpot = new Jackpot(winningNumber, bonusNumber);
+
+        LottoMatcher lottoMatcher = new LottoMatcher(lottos, jackpot);
+
+        outView.printLottoMatcher(lottoMatcher.getMatchCounts(), lottoMatcher.getRate(money));
+
     }
 
     private int getValidMoney(InputView inputView, OutView outView) {
@@ -61,6 +54,16 @@ public class LottoController {
                 int money = inputView.getMoney();
                 validate(money);
                 return money;
+            } catch (IllegalArgumentException e) {
+                System.err.println("[ERROR] " + e.getMessage());
+            }
+        }
+    }
+
+    private Lotto getValidManualLotto(InputView inputView){
+        while(true){
+            try{
+                return new ManualLotto(inputView.manualLotto());
             } catch (IllegalArgumentException e) {
                 System.err.println("[ERROR] " + e.getMessage());
             }
