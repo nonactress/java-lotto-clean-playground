@@ -39,11 +39,15 @@ public class LottoController {
         outView.promptForBonus();
         int bonusNumber = inputView.getBonus();
 
-        Jackpot jackpot = new Jackpot(winningNumber, bonusNumber);
+        try {
+            Jackpot jackpot = new Jackpot(winningNumber, bonusNumber);
 
-        LottoMatcher lottoMatcher = new LottoMatcher(lottos, jackpot);
+            LottoMatcher lottoMatcher = new LottoMatcher(lottos, jackpot);
 
-        outView.printLottoMatcher(lottoMatcher.getMatchCounts(), lottoMatcher.getRate(money));
+            outView.printLottoMatcher(lottoMatcher.getMatchCounts(), lottoMatcher.getRate(money));
+        } catch (IllegalArgumentException e) {
+            System.err.println("[ERROR] " + e.getMessage());
+        }
 
     }
 

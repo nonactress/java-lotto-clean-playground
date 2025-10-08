@@ -22,7 +22,6 @@ public class JackpotGenerator {
         if (splits.length != 6) {
             throw new IllegalArgumentException("당첨 번호는 6개를 입력해야 합니다.");
         }
-
         Set<Integer> numbers = new TreeSet<>();
         for (String s : splits) {
             int number;
@@ -32,12 +31,10 @@ public class JackpotGenerator {
                 throw new IllegalArgumentException("당첨 번호는 숫자여야 합니다.");
             }
             validateNumberRange(number);
-            numbers.add(number);
+            if (!numbers.add(number)) {
+                throw new IllegalArgumentException("당첨 번호는 중복될 수 없습니다.");
+            }
         }
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("당첨 번호는 중복될 수 없습니다.");
-        }
-
         return numbers;
     }
 
